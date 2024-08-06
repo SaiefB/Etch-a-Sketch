@@ -1,0 +1,33 @@
+*{
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(56, 56, 56);
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.gridContainer {
+
+}
+
+.gridRow {
+    border: 1px solid hsl(0, 0%, 100%);
+    display: flex;
+}
+
+.cell {
+    border: 1px solid rgb(255, 255, 255);
+    width: 30px;
+    height: 30px;
+}
+
+.gridRow, .cell {
+    margin: 0;
+    padding: 0;
+  }

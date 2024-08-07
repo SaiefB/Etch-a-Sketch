@@ -1,45 +1,33 @@
 // Variables
 const container = document.querySelector(".gridContainer");
-let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
-let numberBtn = document.querySelector(".numberBtn");
+const numberBtn = document.querySelector(".numberBtn");
 
 // Creates a default grid sized 16x16
-function defaultGrid () {
-    makeRows(16);
-    makeColumns(16);
-    addCellEventListeners();
-};
-
-function customGrid(value) {
-    makeRows(value);
-    makeColumns(value);
+function defaultGrid() {
+    createGrid(16);
     addCellEventListeners();
 }
 
-// Creates Rows
-function makeRows(rowNum) {
-    container.innerHTML = "";
+function customGrid(value) {
+    createGrid(value);
+    addCellEventListeners();
+}
 
-    // Creates rows
-    for (r = 0; r < rowNum; r++) {
-        let row = document.createElement("div");
-        container.appendChild(row).className = "gridRow";
-    };
-};
+// Create Grid
+function createGrid(size) {
+    container.innerHTML = ""; // Clear existing cells
 
-// Creates columns
-function makeColumns(cellNum) {
-    for (i = 0; i < rows.length; i++) {
-        for (j = 0; j < cellNum; j++) {
-            let newCell = document.createElement("div");
-            rows[j].appendChild(newCell).className = "cell";
-        };
+    const cellSize = container.clientWidth / size; // Calculate the size of each cell
 
-    };
-};
-
-defaultGrid();
+    for (let i = 0; i < size * size; i++) {
+        let cell = document.createElement("div");
+        cell.className = "cell";
+        cell.style.width = `${cellSize}px`;
+        cell.style.height = `${cellSize}px`;
+        container.appendChild(cell);
+    }
+}
 
 // Add event listeners to cells
 function addCellEventListeners() {
@@ -50,24 +38,17 @@ function addCellEventListeners() {
     }
 }
 
-// numberBtn initialised
-
-// initialise prompt, save value in prompt then remove prompt window
-    // if number is between 1 -100 continue
-    // then remove defaultGrid()
-    // else number is not within specified range, error
-// assign makeRows() and makeColumns() with prompt value
-// this should create grid
+// Initialize the grid
+defaultGrid();
 
 // numberBtn functionality
-    numberBtn.addEventListener("click", () => {
-        let numberBtnValue = prompt("Set the grid. Enter a value between 1-100:")
-        let gridSize = parseInt(numberBtnValue); // turns numberBtnValue into an Integer
-        
-        if (gridSize >= 1 && gridSize <= 100) {
-            customGrid(gridSize);
-        } else {
-            alert("Please enter a number between 1 and 100.");
-        }
-    });
-
+numberBtn.addEventListener("click", () => {
+    let numberBtnValue = prompt("Set the grid. Enter a value between 1-100:");
+    let gridSize = parseInt(numberBtnValue); // turns numberBtnValue into an Integer
+    
+    if (gridSize >= 1 && gridSize <= 100) {
+        customGrid(gridSize);
+    } else {
+        alert("Please enter a number between 1 and 100.");
+    }
+});

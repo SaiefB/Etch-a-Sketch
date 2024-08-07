@@ -13,21 +13,19 @@ body {
 }
 
 .gridContainer {
-
-}
-
-.gridRow {
-    border: 1px solid hsl(0, 0%, 100%);
     display: flex;
-}
+    flex-wrap: wrap;
+    width: 600px; /* Fixed width */
+    height: 600px; /* Fixed height */
+    border: 1px solid black; /* Optional: for better visibility of container */
+  }
 
-.cell {
-    border: 1px solid rgb(255, 255, 255);
-    width: 30px;
-    height: 30px;
-}
+  .cell {
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    border: 1px solid #ccc; /* Optional: for better visibility of cells */
+  }
 
-.gridRow, .cell {
+  .gridRow, .cell {
     margin: 0;
     padding: 0;
   }

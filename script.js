@@ -2,6 +2,7 @@
 const container = document.querySelector(".gridContainer");
 let rows = document.getElementsByClassName("gridRow");
 let cells = document.getElementsByClassName("cell");
+let numberBtn = document.querySelector(".numberBtn");
 
 // Creates a default grid sized 16x16
 function defaultGrid () {
@@ -10,8 +11,15 @@ function defaultGrid () {
     addCellEventListeners();
 };
 
+function customGrid(value) {
+    makeRows(value);
+    makeColumns(value);
+    addCellEventListeners();
+}
+
 // Creates Rows
 function makeRows(rowNum) {
+    container.innerHTML = "";
 
     // Creates rows
     for (r = 0; r < rowNum; r++) {
@@ -41,3 +49,25 @@ function addCellEventListeners() {
         });
     }
 }
+
+// numberBtn initialised
+
+// initialise prompt, save value in prompt then remove prompt window
+    // if number is between 1 -100 continue
+    // then remove defaultGrid()
+    // else number is not within specified range, error
+// assign makeRows() and makeColumns() with prompt value
+// this should create grid
+
+// numberBtn functionality
+    numberBtn.addEventListener("click", () => {
+        let numberBtnValue = prompt("Set the grid. Enter a value between 1-100:")
+        let gridSize = parseInt(numberBtnValue); // turns numberBtnValue into an Integer
+        
+        if (gridSize >= 1 && gridSize <= 100) {
+            customGrid(gridSize);
+        } else {
+            alert("Please enter a number between 1 and 100.");
+        }
+    });
+

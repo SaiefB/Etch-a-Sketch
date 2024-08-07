@@ -18,9 +18,7 @@ function customGrid(value) {
 // Create Grid
 function createGrid(size) {
     container.innerHTML = ""; // Clear existing cells
-
     const cellSize = container.clientWidth / size; // Calculate the size of each cell
-
     for (let i = 0; i < size * size; i++) {
         let cell = document.createElement("div");
         cell.className = "cell";
@@ -34,7 +32,8 @@ function createGrid(size) {
 function addCellEventListeners() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].addEventListener("mouseover", () => {
-            cells[i].style.backgroundColor = "white";
+            cells[i].style.backgroundColor = "black";
+            cells[i].style.border = "black"
         });
     }
 }
@@ -46,7 +45,6 @@ defaultGrid();
 numberBtn.addEventListener("click", () => {
     let numberBtnValue = prompt("Set the grid. Enter a value between 1-100:");
     let gridSize = parseInt(numberBtnValue); // turns numberBtnValue into an Integer
-    
     if (gridSize >= 1 && gridSize <= 100) {
         customGrid(gridSize);
     } else {
@@ -57,7 +55,8 @@ numberBtn.addEventListener("click", () => {
 // clear button
 clearBtn.addEventListener("click", () => {
     for (let i = 0; i < cells.length; i++) {
-    cells[i].style.backgroundColor = "rgb(56, 56, 56)"    
+    cells[i].style.backgroundColor = "white"    
+    cells[i].style.border = "1px solid #ccc"    
     }
     
 })

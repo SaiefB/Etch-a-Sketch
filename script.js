@@ -2,6 +2,7 @@
 const container = document.querySelector(".gridContainer");
 let cells = document.getElementsByClassName("cell");
 const numberBtn = document.querySelector(".numberBtn");
+const clearBtn = document.querySelector(".clearBtn");
 
 // Creates a default grid sized 16x16
 function defaultGrid() {
@@ -52,3 +53,11 @@ numberBtn.addEventListener("click", () => {
         alert("Please enter a number between 1 and 100.");
     }
 });
+
+// clear button
+clearBtn.addEventListener("click", () => {
+    for (let i = 0; i < cells.length; i++) {
+    cells[i].style.backgroundColor = "rgb(56, 56, 56)"    
+    }
+    
+})
